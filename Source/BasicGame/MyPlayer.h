@@ -11,18 +11,34 @@ class BASICGAME_API AMyPlayer : public ACharacter
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
+
 	AMyPlayer();
 
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
-	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
-
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
-	
+	/** Move forward player keybord input*/
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	void MoveForward(float Val);
+
+	/** Move right player keybord input*/
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	void MoveRight(float Val);
+
+	/** Look yaw player mouse input*/
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	void LookYaw(float Val);
+
+	/** Look pitch player mouse input*/
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	void LookPitch(float Val);
+
+	/** Player use keybord action*/
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	void Use();
+
+private:
+
+
 };

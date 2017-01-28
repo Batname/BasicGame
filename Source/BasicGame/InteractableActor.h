@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
+#include "BasicGame.h"
 #include "InteractableActor.generated.h"
 
 UCLASS()
@@ -28,11 +29,11 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 	/** Action will be called when actor focused */
-	UFUNCTION()
+	//UFUNCTION()
 	void OnBeginFocus();
 
 	/** Action will be called when actor un focused */
-	UFUNCTION()
+	//UFUNCTION()
 	void OnEndFocus();
 
 private:
@@ -41,7 +42,7 @@ private:
 	uint32 bCanInteract : 1;
 
 	/** collection of meshes */
-	UPROPERTY(VisibleAnywhere, Category = "InteractableActor")
+	//UPROPERTY(VisibleAnywhere, Category = "InteractableActor")
 	TArray<class UMeshComponent*> Meshes;
 
 	/** Set Stancil Color */

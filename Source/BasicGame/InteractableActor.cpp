@@ -1,6 +1,6 @@
 #include "BasicGame.h"
-#include "MyPlayer.h"
 #include "InteractableActor.h"
+#include "MyPlayer.h"
 
 // Sets default values
 AInteractableActor::AInteractableActor()
@@ -34,7 +34,7 @@ void AInteractableActor::BeginPlay()
 	for (UActorComponent* Mesh : GetComponentsByClass(UMeshComponent::StaticClass()))
 	{
 		UMeshComponent* ThisMesh = Cast<UMeshComponent>(Mesh);
-		if (ThisMesh)
+		if (ThisMesh != nullptr)
 		{
 			Meshes.Push(ThisMesh);
 		}

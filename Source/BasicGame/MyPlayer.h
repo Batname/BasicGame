@@ -43,7 +43,7 @@ public:
 	
 	/** Set action for highliting */
 	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
-	void HandleHighLight();
+	void HandleHighlight();
 private:
 
 	/** Set distanse for player interaction */
@@ -52,7 +52,7 @@ private:
 
 	/** Keep in track focused actor */
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))
-	class AInteractableActor* FocusedActor;
+	AInteractableActor* FocusedActor;
 
 	/** Trace params property */
 	FCollisionQueryParams TraceParams;

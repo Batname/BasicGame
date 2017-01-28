@@ -1,12 +1,26 @@
 
 #include "BasicGame.h"
 #include "MyPlayer.h"
+#include "IteractableActor.h"
 
 
 AMyPlayer::AMyPlayer()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	// Set interaction distance
+	InteractionDistance = 300.0f;
+
+	if (Controller && Controller->IsLocalController())
+	{
+		HandleHighLight();
+	}
+
+	// Set trace params
+	TraceParams = FCollisionQueryParams(FName(TEXT("TraceParams")), false, this);
+	TraceParams.bTraceComplex = false;
+	TraceParams.bTraceAsyncScene = false;
+	TraceParams.bReturnPhysicalMaterial = false;
 }
 
 void AMyPlayer::BeginPlay()
@@ -59,5 +73,59 @@ void AMyPlayer::LookPitch(float Val)
 
 void AMyPlayer::Use()
 {
+	//AInteractableActor* Interactable = FindFocusedActor();
+	//if (Interactable)
+	//{
+	//	Interactable->OnInteract(this);
+	//}
+}
+
+//AInteractableActor* AMyPlayer::FindFocusedActor()
+//{
+//	// If no controller return from function
+//	if (!Controller) return nullptr;
+//
+//	FVector Location;
+//	FRotator Rotation;
+//	FHitResult Hit(ForceInit);
+//	Controller->GetPlayerViewPoint(Location, Rotation);
+//
+//	FVector Start = Location;
+//	FVector End = Start + (Rotation.Vector() * InteractionDistance);
+//
+//	// @TODO Check here could be errors
+//	GetWorld()->LineTraceSingleByObjectType(Hit, Start, End, ECC_Camera, TraceParams);
+//	if (Hit.bBlockingHit)
+//	{
+//		AInteractableActor* MyCastActor = Cast<AInteractableActor>(Hit.GetActor());
+//		// return if we successfuly cast an actor
+//		if (MyCastActor)
+//		{
+//			return MyCastActor;
+//		}
+//	}
+//
+//	return nullptr;
+//}
+
+void AMyPlayer::HandleHighLight()
+{
+	//AInteractableActor* NewHighlight = FindFocusedActor();
+	//if (NewHighlight)
+	//{
+	//	// If it not same focused object
+	//	if (NewHighlight != FocusedActor)
+	//	{
+	//		// swith focused actors
+	//		if (FocusedActor) FocusedActor->OnEndFocus();
+	//		NewHighlight->OnBeginFocus();
+	//		FocusedActor = NewHighlight;
+	//	}
+	//}
+	//else
+	//{
+	//	if (FocusedActor) FocusedActor->OnEndFocus();
+	//	FocusedActor = nullptr;
+	//}
 }
 

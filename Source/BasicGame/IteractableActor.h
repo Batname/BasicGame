@@ -3,7 +3,6 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "BasicGame.h"
 #include "IteractableActor.generated.h"
 
 UCLASS()
@@ -35,9 +34,6 @@ public:
 	/** Action will be called when actor un focused */
 	UFUNCTION()
 	void OnEndFocus();
-
-protected:
-
 	
 private:
 	/** Boolean for posobility interaction */

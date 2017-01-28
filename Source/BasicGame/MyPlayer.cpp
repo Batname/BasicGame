@@ -15,6 +15,10 @@ AMyPlayer::AMyPlayer()
 	TraceParams.bTraceComplex = false;
 	TraceParams.bTraceAsyncScene = false;
 	TraceParams.bReturnPhysicalMaterial = false;
+
+	// Set Health points
+	MaxHealthPoints = 100.0f;
+	HealthPoints = MaxHealthPoints;
 }
 
 void AMyPlayer::BeginPlay()
@@ -30,6 +34,7 @@ void AMyPlayer::Tick( float DeltaTime )
 	if (Controller && Controller->IsLocalController())
 	{
 		HandleHighlight();
+		GEngine->AddOnScreenDebugMessage(0, DeltaTime, FColor::Red, FString::Printf(TEXT("HP: %f"), HealthPoints));
 	}
 }
 
@@ -125,3 +130,21 @@ void AMyPlayer::HandleHighlight()
 	}
 }
 
+float AMyPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser)
+{
+	// Get calculation result of damage from parent
+	float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+
+	HealthPoints = HealthPoints - ActualDamage;
+
+	// Check if player still has HP
+	if (HealthPoints <= 0) OnDeath();
+
+	return ActualDamage;
+}
+
+void AMyPlayer::OnDeath()
+{
+	Destroy();
+	GEngine->AddOnScreenDebugMessage(0, 1000.0f, FColor::Red, FString::Printf(TEXT("You Have died!")));
+}

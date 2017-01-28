@@ -14,9 +14,11 @@ public:
 
 	AMyPlayer();
 
+	// overrides
 	virtual void BeginPlay() override;
 	virtual void Tick( float DeltaSeconds ) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser) override;
 
 	/** Move forward player keybord input*/
 	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
@@ -45,11 +47,24 @@ public:
 	/** Set action for highliting */
 	UFUNCTION(BlueprintCallable, Category = "MyPlayer")
 	void HandleHighlight();
+
+	/** Handle on death */
+	UFUNCTION(BlueprintCallable, Category = "MyPlayer")
+	void OnDeath();
+	
 private:
 
 	/** Set distanse for player interaction */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))
 	float InteractionDistance;
+
+	/** Keep in track MAX player Health Points */
+	UPROPERTY(EditDefaultsOnly)
+	float MaxHealthPoints;
+
+	/** Keep in track player Health Points */
+	UPROPERTY(EditDefaultsOnly)
+	float HealthPoints;
 
 	/** Keep in track focused actor */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))

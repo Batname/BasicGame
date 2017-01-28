@@ -37,6 +37,7 @@ void AInteractableActor::BeginPlay()
 		if (ThisMesh != nullptr)
 		{
 			Meshes.Push(ThisMesh);
+			ThisMesh->SetCustomDepthStencilValue((uint8)Color);
 		}
 	}
 }
@@ -57,7 +58,6 @@ void AInteractableActor::OnBeginFocus()
 	for (UMeshComponent* Mesh : Meshes)
 	{
 		Mesh->SetRenderCustomDepth(true);
-		Mesh->SetCustomDepthStencilValue((uint8)Color);
 	}
 }
 

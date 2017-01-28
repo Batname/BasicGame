@@ -29,23 +29,23 @@ public:
 
 	/** Action will be called when actor focused */
 	UFUNCTION()
-		void OnBeginFocus();
+	void OnBeginFocus();
 
 	/** Action will be called when actor un focused */
 	UFUNCTION()
-		void OnEndFocus();
+	void OnEndFocus();
 
 private:
 	/** Boolean for posobility interaction */
 	UPROPERTY(VisibleAnywhere, Category = "InteractableActor")
-		uint32 bCanInteract : 1;
+	uint32 bCanInteract : 1;
 
 	/** collection of meshes */
 	UPROPERTY(VisibleAnywhere, Category = "InteractableActor")
-		TArray<class UMeshComponent*> Meshes;
+	TArray<class UMeshComponent*> Meshes;
 
 	/** Set Stancil Color */
 	UPROPERTY(VisibleAnywhere, Category = "InteractableActor")
-		EStancilColor Color;
+	EStancilColor Color;
 };
 

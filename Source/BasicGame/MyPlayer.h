@@ -47,7 +47,7 @@ public:
 private:
 
 	/** Set distanse for player interaction */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))
 	float InteractionDistance;
 
 	/** Keep in track focused actor */

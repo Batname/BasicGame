@@ -48,14 +48,13 @@ public:
 private:
 
 	/** Set distanse for player interaction */
-	//UPROPERTY(EditDefaultsOnly, Category = "MyPlayer")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))
 	float InteractionDistance;
 
 	/** Keep in track focused actor */
-	//UPROPERTY(VisibleAnywhere, Category = "MyPlayer")
-	//AInteractableActor* FocusedActor;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))
+	class AInteractableActor* FocusedActor;
 
 	/** Trace params property */
-	//UPROPERTY(VisibleAnywhere, Category = "MyPlayer")
 	FCollisionQueryParams TraceParams;
 };

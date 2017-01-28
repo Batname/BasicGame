@@ -7,8 +7,8 @@
 UENUM(BlueprintType)
 enum class EStancilColor : uint8
 {
-	SC_Green =	250 UMETA(DispleyName = "Green"),
-	SC_Blue	 =	251 UMETA(DispleyName = "Blue"),
-	SC_Red	 =	252 UMETA(DispleyName = "Red"),
-	SC_White =	253 UMETA(DispleyName = "White")
+	SC_Green =	250 UMETA(DisplayName="Green"),
+	SC_Blue	 =	251 UMETA(DisplayName="Blue"),
+	SC_Red	 =	252 UMETA(DisplayName="Red"),
+	SC_White =	253 UMETA(DisplayName="White")
 };

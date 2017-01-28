@@ -98,6 +98,7 @@ AInteractableActor* AMyPlayer::FindFocusedActor()
 		// Cast ans return
 		AInteractableActor* MyCastActor = Cast<AInteractableActor>(Hit.GetActor());
 		if (MyCastActor != nullptr) return MyCastActor;
+
 	}
 
 	return nullptr;

@@ -37,7 +37,7 @@ public:
 
 private:
 	/** Boolean for posobility interaction */
-	UPROPERTY(VisibleAnywhere, Category = "InteractableActor")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "InteractableActor", meta = (AllowPrivateAccess = "true"))
 	uint32 bCanInteract : 1;
 
 	/** collection of meshes */
@@ -45,7 +45,7 @@ private:
 	TArray<class UMeshComponent*> Meshes;
 
 	/** Set Stancil Color */
-	UPROPERTY(VisibleAnywhere, Category = "InteractableActor")
+	UPROPERTY(EditDefaultsOnly, Category = "InteractableActor")
 	EStancilColor Color;
 };
 

@@ -17,7 +17,7 @@ void AInteractableActor::OnInteract_Implementation(AActor * Caller)
 {
 	// Cast to MyPlayer, that is like dynamic_cast in std
 	AMyPlayer* Player = Cast<AMyPlayer>(Caller);
-	if (Player == nullptr)
+	if (Player)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Now Interacting"));
 		Destroy();

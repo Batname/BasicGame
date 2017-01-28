@@ -91,15 +91,13 @@ AInteractableActor* AMyPlayer::FindFocusedActor()
 	FVector Start = Location;
 	FVector End = Start + (Rotation.Vector() * InteractionDistance);
 
+	// Make math for Line trace for check view collision
 	GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Camera, TraceParams);
 	if (Hit.bBlockingHit)
 	{
+		// Cast ans return
 		AInteractableActor* MyCastActor = Cast<AInteractableActor>(Hit.GetActor());
-		// return if we successfuly cast an actor
-		if (MyCastActor)
-		{
-			return MyCastActor;
-		}
+		if (MyCastActor != nullptr) return MyCastActor;
 	}
 
 	return nullptr;

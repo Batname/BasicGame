@@ -18,7 +18,7 @@ public:
 	/** OnInteract function will be overriden in blueprints, because BlueprintNative event means it can be overriden in blueprints
 	* @param Caller Instance of AActor
 	*/
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = Interaction)
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=Interaction)
 	void OnInteract(AActor* Caller);
 	virtual void OnInteract_Implementation(AActor* Caller);
 

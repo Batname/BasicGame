@@ -1,8 +1,7 @@
 
 #include "BasicGame.h"
 #include "MyPlayer.h"
-#include "IteractableActor.h"
-
+#include "InteractableActor.h"
 
 AMyPlayer::AMyPlayer()
 {
@@ -73,59 +72,59 @@ void AMyPlayer::LookPitch(float Val)
 
 void AMyPlayer::Use()
 {
-	//AInteractableActor* Interactable = FindFocusedActor();
-	//if (Interactable)
-	//{
-	//	Interactable->OnInteract(this);
-	//}
+	AInteractableActor* Interactable = FindFocusedActor();
+	if (Interactable)
+	{
+		Interactable->OnInteract(this);
+	}
 }
 
-//AInteractableActor* AMyPlayer::FindFocusedActor()
-//{
-//	// If no controller return from function
-//	if (!Controller) return nullptr;
-//
-//	FVector Location;
-//	FRotator Rotation;
-//	FHitResult Hit(ForceInit);
-//	Controller->GetPlayerViewPoint(Location, Rotation);
-//
-//	FVector Start = Location;
-//	FVector End = Start + (Rotation.Vector() * InteractionDistance);
-//
-//	// @TODO Check here could be errors
-//	GetWorld()->LineTraceSingleByObjectType(Hit, Start, End, ECC_Camera, TraceParams);
-//	if (Hit.bBlockingHit)
-//	{
-//		AInteractableActor* MyCastActor = Cast<AInteractableActor>(Hit.GetActor());
-//		// return if we successfuly cast an actor
-//		if (MyCastActor)
-//		{
-//			return MyCastActor;
-//		}
-//	}
-//
-//	return nullptr;
-//}
+AInteractableActor* AMyPlayer::FindFocusedActor()
+{
+	// If no controller return from function
+	if (!Controller) return nullptr;
+
+	FVector Location;
+	FRotator Rotation;
+	FHitResult Hit(ForceInit);
+	Controller->GetPlayerViewPoint(Location, Rotation);
+
+	FVector Start = Location;
+	FVector End = Start + (Rotation.Vector() * InteractionDistance);
+
+	// @TODO Check here could be errors
+	GetWorld()->LineTraceSingleByObjectType(Hit, Start, End, ECC_Camera, TraceParams);
+	if (Hit.bBlockingHit)
+	{
+		AInteractableActor* MyCastActor = Cast<AInteractableActor>(Hit.GetActor());
+		// return if we successfuly cast an actor
+		if (MyCastActor)
+		{
+			return MyCastActor;
+		}
+	}
+
+	return nullptr;
+}
 
 void AMyPlayer::HandleHighLight()
 {
-	//AInteractableActor* NewHighlight = FindFocusedActor();
-	//if (NewHighlight)
-	//{
-	//	// If it not same focused object
-	//	if (NewHighlight != FocusedActor)
-	//	{
-	//		// swith focused actors
-	//		if (FocusedActor) FocusedActor->OnEndFocus();
-	//		NewHighlight->OnBeginFocus();
-	//		FocusedActor = NewHighlight;
-	//	}
-	//}
-	//else
-	//{
-	//	if (FocusedActor) FocusedActor->OnEndFocus();
-	//	FocusedActor = nullptr;
-	//}
+	AInteractableActor* NewHighlight = FindFocusedActor();
+	if (NewHighlight)
+	{
+		// If it not same focused object
+		if (NewHighlight != FocusedActor)
+		{
+			// swith focused actors
+			if (FocusedActor) FocusedActor->OnEndFocus();
+			NewHighlight->OnBeginFocus();
+			FocusedActor = NewHighlight;
+		}
+	}
+	else
+	{
+		if (FocusedActor) FocusedActor->OnEndFocus();
+		FocusedActor = nullptr;
+	}
 }
 

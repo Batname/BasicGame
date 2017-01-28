@@ -1,13 +1,11 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "BasicGame.h"
 #include "MyPlayer.h"
-#include "IteractableActor.h"
+#include "InteractableActor.h"
 
 // Sets default values
-AIteractableActor::AIteractableActor()
+AInteractableActor::AInteractableActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Set default color
@@ -15,7 +13,7 @@ AIteractableActor::AIteractableActor()
 }
 
 // Define OnInteract instead OnInteract for reason it Will be overriden in blueprints
-void AIteractableActor::OnInteract_Implementation(AActor * Caller)
+void AInteractableActor::OnInteract_Implementation(AActor * Caller)
 {
 	// Cast to MyPlayer, that is like dynamic_cast in std
 	AMyPlayer* Player = Cast<AMyPlayer>(Caller);
@@ -28,10 +26,10 @@ void AIteractableActor::OnInteract_Implementation(AActor * Caller)
 }
 
 // Called when the game starts or when spawned
-void AIteractableActor::BeginPlay()
+void AInteractableActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	// Fill mesh array for Actor
 	for (UActorComponent* Mesh : GetComponentsByClass(UMeshComponent::StaticClass()))
 	{
@@ -44,13 +42,13 @@ void AIteractableActor::BeginPlay()
 }
 
 // Called every frame
-void AIteractableActor::Tick( float DeltaTime )
+void AInteractableActor::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
 
 }
 
-void AIteractableActor::OnBeginFocus()
+void AInteractableActor::OnBeginFocus()
 {
 	// check if player can interact
 	if (!bCanInteract) return;
@@ -63,7 +61,7 @@ void AIteractableActor::OnBeginFocus()
 	}
 }
 
-void AIteractableActor::OnEndFocus()
+void AInteractableActor::OnEndFocus()
 {
 	// loop through meshes
 	for (UMeshComponent* Mesh : Meshes)

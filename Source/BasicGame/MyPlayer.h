@@ -19,31 +19,30 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	/** Move forward player keybord input*/
-	// UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
 	void MoveForward(float Val);
 
 	/** Move right player keybord input*/
-	//UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
 	void MoveRight(float Val);
 
 	/** Look yaw player mouse input*/
-	//UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
 	void LookYaw(float Val);
 
 	/** Look pitch player mouse input*/
-	//UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
 	void LookPitch(float Val);
 
 	/** Player use keybord action*/
-	//UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
 	void Use();
 
 	/** Forward definition because we cannot include one header file inside onother */
-	//UFUNCTION(BlueprintPure, Category = "MyPlayer")
-	//class AInteractableActor* FindFocusedActor();
+	class AInteractableActor* FindFocusedActor();
 	
 	/** Set action for highliting */
-	//UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
+	UFUNCTION(BlueprintCallable, Category = "MyPlayerInput")
 	void HandleHighLight();
 private:
 

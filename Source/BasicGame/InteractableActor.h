@@ -46,7 +46,7 @@ private:
 	TArray<class UMeshComponent*> Meshes;
 
 	/** Set Stancil Color */
-	UPROPERTY(EditDefaultsOnly, Category = "InteractableActor")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "InteractableActor", meta = (AllowPrivateAccess = "true"))
 	EStancilColor Color;
 };
 

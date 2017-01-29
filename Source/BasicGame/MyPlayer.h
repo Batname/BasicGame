@@ -63,7 +63,7 @@ private:
 	float MaxHealthPoints;
 
 	/** Keep in track player Health Points */
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(BlueprintReadWrite, meta =(AllowPrivateAccess = "true"), Category=Health)
 	float HealthPoints;
 
 	/** Keep in track focused actor */

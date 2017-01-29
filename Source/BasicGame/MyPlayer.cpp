@@ -29,6 +29,10 @@ AMyPlayer::AMyPlayer()
 	// Attach camera
 	CameraBoom->SetupAttachment(RootComponent);
 	PlayerCamera->SetupAttachment(CameraBoom);
+
+	// Set player movements
+	WalkSpeed = 600.0f;
+	RunSpeed = 1200.0f;
 }
 
 void AMyPlayer::BeginPlay()
@@ -58,6 +62,8 @@ void AMyPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	InputComponent->BindAxis("LookYaw", this, &AMyPlayer::LookYaw);
 	InputComponent->BindAxis("LookPitch", this, &AMyPlayer::LookPitch);
 	InputComponent->BindAction("Use", IE_Pressed, this, &AMyPlayer::Use);
+	InputComponent->BindAction("Run", IE_Pressed, this, &AMyPlayer::StartRun);
+	InputComponent->BindAction("Run", IE_Released, this, &AMyPlayer::StopRun);
 }
 
 void AMyPlayer::MoveForward(float Val)
@@ -93,6 +99,20 @@ void AMyPlayer::Use()
 	{
 		Interactable->OnInteract(this);
 	}
+}
+
+void AMyPlayer::StartRun()
+{
+	// Set run speed and movement status
+	bIsRunning = true;
+	GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
+}
+
+void AMyPlayer::StopRun()
+{
+	// Set walk speed and movement status
+	bIsRunning = false;
+	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 }
 
 AInteractableActor* AMyPlayer::FindFocusedActor()

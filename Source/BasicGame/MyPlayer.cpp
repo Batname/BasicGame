@@ -19,9 +19,6 @@ AMyPlayer::AMyPlayer()
 	// Set MAX Health points
 	MaxHealthPoints = 100.0f;
 
-	// Set player HP
-	HealthPoints = MaxHealthPoints;
-
 	// Create Camera Player object and add test for blueprints
 	PlayerCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PlayerCamera"));
 
@@ -40,6 +37,12 @@ AMyPlayer::AMyPlayer()
 void AMyPlayer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Set player HP
+	HealthPoints = MaxHealthPoints;
+
+	// Call Blueprint update health funciton
+	HUDUpdateHP();
 }
 
 void AMyPlayer::Tick( float DeltaTime )
@@ -170,6 +173,9 @@ float AMyPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & Dama
 
 	HealthPoints = HealthPoints - ActualDamage;
 
+	// Call Blueprint update health funciton
+	HUDUpdateHP();
+
 	// Check if player still has HP
 	if (HealthPoints <= 0) OnDeath();
 
@@ -187,5 +193,8 @@ void AMyPlayer::Heal(float Amount)
 	if (Amount > 0)
 	{
 		HealthPoints += Amount;
+
+		// Call Blueprint update health funciton
+		HUDUpdateHP();
 	}
 }

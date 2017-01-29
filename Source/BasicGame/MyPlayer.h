@@ -63,6 +63,11 @@ public:
 	/** Set new health points */
 	UFUNCTION()
 	void Heal(float Amount);
+
+	// HUD
+	/** Updating player HP for blueprints calls */
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = HUD)
+	void HUDUpdateHP();
 	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess="true"))

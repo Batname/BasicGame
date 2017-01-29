@@ -148,3 +148,11 @@ void AMyPlayer::OnDeath()
 	Destroy();
 	GEngine->AddOnScreenDebugMessage(0, 1000.0f, FColor::Red, FString::Printf(TEXT("You Have died!")));
 }
+
+void AMyPlayer::Heal(float Amount)
+{
+	if (Amount > 0)
+	{
+		HealthPoints += Amount;
+	}
+}

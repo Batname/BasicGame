@@ -48,9 +48,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "MyPlayer")
 	void HandleHighlight();
 
-	/** Handle on death */
+	/** Action on death */
 	UFUNCTION(BlueprintCallable, Category = "MyPlayer")
 	void OnDeath();
+
+	/** Set new health points */
+	UFUNCTION()
+	void Heal(float Amount);
 	
 private:
 

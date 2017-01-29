@@ -27,8 +27,8 @@ AMyPlayer::AMyPlayer()
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 
 	// Attach camera
-	CameraBoom->AttachTo(RootComponent);
-	PlayerCamera->AttachTo(CameraBoom);
+	CameraBoom->SetupAttachment(RootComponent);
+	PlayerCamera->SetupAttachment(CameraBoom);
 }
 
 void AMyPlayer::BeginPlay()

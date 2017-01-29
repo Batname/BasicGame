@@ -42,7 +42,7 @@ private:
 	uint32 bCanInteract : 1;
 
 	/** collection of meshes */
-	UPROPERTY(VisibleAnywhere, Category = "InteractableActor")
+	UPROPERTY()
 	TArray<class UMeshComponent*> Meshes;
 
 	/** Set Stancil Color */

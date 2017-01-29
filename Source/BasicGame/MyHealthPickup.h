@@ -2,14 +2,14 @@
 
 #pragma once
 
-#include "InteractableActor.h"
+#include "PickupBase.h"
 #include "MyHealthPickup.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class BASICGAME_API AMyHealthPickup : public AInteractableActor
+class BASICGAME_API AMyHealthPickup : public APickupBase
 {
 	GENERATED_BODY()
 	

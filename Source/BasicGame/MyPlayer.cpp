@@ -16,8 +16,10 @@ AMyPlayer::AMyPlayer()
 	TraceParams.bTraceAsyncScene = false;
 	TraceParams.bReturnPhysicalMaterial = false;
 
-	// Set Health points
+	// Set MAX Health points
 	MaxHealthPoints = 100.0f;
+
+	// Set player HP
 	HealthPoints = MaxHealthPoints;
 
 	// Create Camera Player object and add test for blueprints
@@ -38,7 +40,6 @@ AMyPlayer::AMyPlayer()
 void AMyPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 void AMyPlayer::Tick( float DeltaTime )
@@ -48,7 +49,7 @@ void AMyPlayer::Tick( float DeltaTime )
 	if (Controller && Controller->IsLocalController())
 	{
 		HandleHighlight();
-		GEngine->AddOnScreenDebugMessage(0, DeltaTime, FColor::Red, FString::Printf(TEXT("HP: %f"), HealthPoints));
+		// GEngine->AddOnScreenDebugMessage(0, DeltaTime, FColor::Red, FString::Printf(TEXT("HP: %f"), HealthPoints));
 	}
 }
 
@@ -68,7 +69,7 @@ void AMyPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AMyPlayer::MoveForward(float Val)
 {
-	FRotator Rotation(0, GetActorRotation().Yaw, 0);
+	// FRotator Rotation(0, GetActorRotation().Yaw, 0);
 	//FVector Forvard = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
 	FVector Forvard(1, 0, 0);
 	AddMovementInput(Forvard, Val);
@@ -76,7 +77,7 @@ void AMyPlayer::MoveForward(float Val)
 
 void AMyPlayer::MoveRight(float Val)
 {
-	FRotator Rotation(0, GetActorRotation().Yaw, 0);
+	// FRotator Rotation(0, GetActorRotation().Yaw, 0);
 	//FVector Right = FRotationMatrix(Rotation).GetScaledAxis(EAxis::Y);
 	FVector Right(0, 1, 0);
 	AddMovementInput(Right, Val);
@@ -84,12 +85,12 @@ void AMyPlayer::MoveRight(float Val)
 
 void AMyPlayer::LookYaw(float Val)
 {
-	AddControllerYawInput(Val);
+	// AddControllerYawInput(Val);
 }
 
 void AMyPlayer::LookPitch(float Val)
 {
-	AddControllerPitchInput(Val);
+	// AddControllerPitchInput(Val);
 }
 
 void AMyPlayer::Use()

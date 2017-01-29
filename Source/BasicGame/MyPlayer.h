@@ -56,6 +56,13 @@ public:
 	UFUNCTION()
 	void Heal(float Amount);
 	
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess="true"))
+	UCameraComponent* PlayerCamera;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess="true"))
+	USpringArmComponent* CameraBoom;
+
 private:
 
 	/** Set distanse for player interaction */

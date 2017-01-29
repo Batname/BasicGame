@@ -19,6 +19,16 @@ AMyPlayer::AMyPlayer()
 	// Set Health points
 	MaxHealthPoints = 100.0f;
 	HealthPoints = MaxHealthPoints;
+
+	// Create Camera Player object and add test for blueprints
+	PlayerCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PlayerCamera"));
+
+	// Create Camera boom
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+
+	// Attach camera
+	CameraBoom->AttachTo(RootComponent);
+	PlayerCamera->AttachTo(CameraBoom);
 }
 
 void AMyPlayer::BeginPlay()
@@ -53,14 +63,16 @@ void AMyPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void AMyPlayer::MoveForward(float Val)
 {
 	FRotator Rotation(0, GetActorRotation().Yaw, 0);
-	FVector Forvard = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
+	//FVector Forvard = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
+	FVector Forvard(1, 0, 0);
 	AddMovementInput(Forvard, Val);
 }
 
 void AMyPlayer::MoveRight(float Val)
 {
 	FRotator Rotation(0, GetActorRotation().Yaw, 0);
-	FVector Right = FRotationMatrix(Rotation).GetScaledAxis(EAxis::Y);
+	//FVector Right = FRotationMatrix(Rotation).GetScaledAxis(EAxis::Y);
+	FVector Right(0, 1, 0);
 	AddMovementInput(Right, Val);
 }
 

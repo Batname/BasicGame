@@ -23,6 +23,6 @@ public:
 private:
 
 	/** Heal amaount for pickup, editable in blueprints */
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "HealthPickup", meta = (AllowPrivateAccess = "true"))
 	float HealAmount;
 };

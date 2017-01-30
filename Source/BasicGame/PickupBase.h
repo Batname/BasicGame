@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
+#include "BasicGame.h"
 #include "PickupBase.generated.h"
 
 UCLASS()

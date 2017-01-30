@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/Character.h"
+#include "BasicGame.h"
 #include "MyPlayer.generated.h"
 
 UCLASS()
@@ -64,6 +65,10 @@ public:
 	UFUNCTION()
 	void Heal(float Amount);
 
+	/** Add ammo to player */
+	UFUNCTION()
+	void AddAmmo(int32 AmmoAmount, EAmmoType AmmoType);
+
 	// HUD
 	/** Updating player HP for blueprints calls */
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = HUD)
@@ -97,6 +102,10 @@ private:
 	/** Keep in track status of player movement. 1 byte Bool value */
 	UPROPERTY(EditDefaultsOnly)
 	uint32 bIsRunning : 1;
+
+	/** Player inventory */
+	UPROPERTY()
+	FPlayerInventory Inventory;
 
 	/** Keep in track player Health Points */
 	UPROPERTY(BlueprintReadWrite, meta =(AllowPrivateAccess = "true"), Category=Health)

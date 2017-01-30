@@ -209,3 +209,8 @@ void AMyPlayer::Heal(float Amount)
 		HUDUpdateHP();
 	}
 }
+
+void AMyPlayer::AddAmmo(int32 AmmoAmount, EAmmoType AmmoType)
+{
+	// @TODO
+}

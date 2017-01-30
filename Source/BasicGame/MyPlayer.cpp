@@ -52,7 +52,18 @@ void AMyPlayer::Tick( float DeltaTime )
 	if (Controller && Controller->IsLocalController())
 	{
 		HandleHighlight();
-		// GEngine->AddOnScreenDebugMessage(0, DeltaTime, FColor::Red, FString::Printf(TEXT("HP: %f"), HealthPoints));
+		// Cast player controller
+		APlayerController* PC = Cast<APlayerController>(Controller);
+		if (PC != nullptr)
+		{
+			FVector MouseLocation, MouseDirection; // It will be passed to function as referance
+			
+			// Set mouse location and direction
+			PC->DeprojectMousePositionToWorld(MouseLocation, MouseDirection);
+			
+			// Set actor rotation according to mouse direction
+			SetActorRotation(FRotator(0, MouseDirection.Rotation().Yaw, 0));
+		}
 	}
 }
 

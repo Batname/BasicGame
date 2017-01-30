@@ -26,23 +26,43 @@ void AWeaponBase::AddAmmo(int32 Amount)
 
 void AWeaponBase::DealDamage()
 {
+	//TODO
 }
 
 void AWeaponBase::Fire()
 {
+	//TODO
 }
 
 void AWeaponBase::SpawnFireEffect()
 {
+	//TODO
 }
 
 void AWeaponBase::SpawnImpactEffect()
 {
+	//TODO
 }
 
 FVector AWeaponBase::CalcSpread()
 {
-	return FVector();
+	if (OwningPlayer != nullptr)
+	{
+		FVector Direction = OwningPlayer->GetActorRotation().Vector();
+
+		// Convert from radians to degrees, basicly that is sin for angle
+		// atan = arcus tangens -> for convertation to Angle in degrees
+		float Angle = atan(Spread / 10000);
+
+		// Return random point for angle
+		return FMath::VRandCone(Direction, Angle);
+	}
+	else 
+	{
+		FVector Direction = GetActorRotation().Vector();
+		float Angle = atan(Spread / 10000);
+		return FMath::VRandCone(Direction, Angle);
+	}
 }
 
 void AWeaponBase::ChangeOwner(AActor* NewOwner)

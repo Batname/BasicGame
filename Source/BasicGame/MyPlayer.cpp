@@ -240,3 +240,7 @@ void AMyPlayer::AddAmmo(int32 Amount, EAmmoType AmmoType)
 		break;
 	}
 }
+
+void AMyPlayer::AddToInventory(AWeaponBase * NewWeapon)
+{
+}

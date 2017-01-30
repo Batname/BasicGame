@@ -69,6 +69,10 @@ public:
 	UFUNCTION()
 	void AddAmmo(int32 Amount, EAmmoType AmmoType);
 
+	/** Add inventory to player */
+	UFUNCTION()
+	void AddToInventory(class AWeaponBase* NewWeapon);
+
 	// HUD
 	/** Updating player HP for blueprints calls */
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = HUD)

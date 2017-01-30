@@ -2,6 +2,9 @@
 #include "BasicGame.h"
 #include "MyPlayer.h"
 #include "InteractableActor.h"
+#include "AssaultRifleBase.h"
+#include "LaserRifleBase.h"
+#include "RocketLaucherBase.h"
 
 AMyPlayer::AMyPlayer()
 {
@@ -210,7 +213,30 @@ void AMyPlayer::Heal(float Amount)
 	}
 }
 
-void AMyPlayer::AddAmmo(int32 AmmoAmount, EAmmoType AmmoType)
+void AMyPlayer::AddAmmo(int32 Amount, EAmmoType AmmoType)
 {
-	// @TODO
+	// define wepon type and add amount
+	switch (AmmoType)
+	{
+	case EAmmoType::AT_Bullets:
+		if (Inventory.AssaultRifle != nullptr)
+		{
+			Inventory.AssaultRifle->AddAmmo(Amount);
+		}
+		break;
+	case EAmmoType::AT_Rockets:
+		if (Inventory.RocketLaucher != nullptr)
+		{
+			Inventory.RocketLaucher->AddAmmo(Amount);
+		}
+		break;
+	case EAmmoType::AT_Lasers:
+		if (Inventory.LaserRifle != nullptr)
+		{
+			Inventory.LaserRifle->AddAmmo(Amount);
+		}
+		break;
+	default:
+		break;
+	}
 }

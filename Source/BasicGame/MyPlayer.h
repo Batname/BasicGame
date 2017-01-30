@@ -67,7 +67,7 @@ public:
 
 	/** Add ammo to player */
 	UFUNCTION()
-	void AddAmmo(int32 AmmoAmount, EAmmoType AmmoType);
+	void AddAmmo(int32 Amount, EAmmoType AmmoType);
 
 	// HUD
 	/** Updating player HP for blueprints calls */

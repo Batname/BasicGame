@@ -34,6 +34,10 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class USphereComponent* CollisionSphere;
 
+	/** Can we interact with object */
+	UPROPERTY(EditDefaultsOnly)
+	uint32 bCanInteract : 1;
+
 private:
 	/** Keep in track status of interaction */
 	UPROPERTY(EditDefaultsOnly)

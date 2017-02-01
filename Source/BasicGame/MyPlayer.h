@@ -29,18 +29,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = PlayerControl)
 	void MoveRight(float Val);
 
-	/** Look yaw player mouse input*/
-	UFUNCTION(BlueprintCallable, Category = PlayerControl)
-	void LookYaw(float Val);
-
-	/** Look pitch player mouse input*/
-	UFUNCTION(BlueprintCallable, Category = PlayerControl)
-	void LookPitch(float Val);
-
-	/** Player use keybord action*/
-	UFUNCTION(BlueprintCallable, Category = PlayerControl)
-	void Use();
-
 	/** Start running */
 	UFUNCTION(BlueprintCallable, Category = PlayerControl)
 	void StartRun();
@@ -48,14 +36,6 @@ public:
 	/** Stop running */
 	UFUNCTION(BlueprintCallable, Category = PlayerControl)
 	void StopRun();
-
-	/** Forward definition because we cannot include one header file inside onother */
-	UFUNCTION(BlueprintPure, Category = "MyPlayer")
-	class AInteractableActor* FindFocusedActor();
-	
-	/** Set action for highliting */
-	UFUNCTION(BlueprintCallable, Category = "MyPlayer")
-	void HandleHighlight();
 
 	/** Action on death */
 	UFUNCTION(BlueprintCallable, Category = "MyPlayer")
@@ -87,10 +67,6 @@ protected:
 
 private:
 
-	/** Set distanse for player interaction */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))
-	float InteractionDistance;
-
 	/** Keep in track MAX player Health Points */
 	UPROPERTY(EditDefaultsOnly)
 	float MaxHealthPoints;
@@ -115,10 +91,4 @@ private:
 	UPROPERTY(BlueprintReadWrite, meta =(AllowPrivateAccess = "true"), Category=Health)
 	float HealthPoints;
 
-	/** Keep in track focused actor */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyPlayer", meta = (AllowPrivateAccess = "true"))
-	AInteractableActor* FocusedActor;
-
-	/** Trace params property */
-	FCollisionQueryParams TraceParams;
 };
